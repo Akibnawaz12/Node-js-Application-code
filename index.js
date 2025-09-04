@@ -1,24 +1,7 @@
-const express = require("express");
-const path = require("path");
+var http = require('http');
 
-const app = express();
-const PORT = process.env.PORT || 3000;
-
-// Serve static files (frontend)
-app.use(express.static(path.join(__dirname, "public")));
-
-// Dummy API for products
-app.get("/api/products", (req, res) => {
-  res.json([
-    { id: 1, name: "iPhone 14", price: 79999 },
-    { id: 2, name: "Samsung Galaxy S23", price: 74999 },
-    { id: 3, name: "Sony Headphones", price: 4999 },
-    { id: 4, name: "HP Laptop", price: 59999 }
-  ]);
-});
-
-// Start server
-app.listen(PORT, () => {
-  console.log(`✅ Amazon Clone running at http://localhost:${PORT}`);
-});
-
+//create a server object:
+http.createServer(function (req, res) {
+  res.write('** Hey my app was deployed :) **'); //write a response to the client
+  res.end(); //end the response
+}).listen(80); //the server object listens on port 80
